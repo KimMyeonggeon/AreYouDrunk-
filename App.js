@@ -9,9 +9,14 @@ import {
 } from 'react-native';
 import React from 'react';
 
+import { Dimensions } from 'react-native';
+
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const Stack = createStackNavigator();
 
@@ -45,7 +50,9 @@ function Home({ navigation }) {
         <TouchableOpacity
           style={styles.button3}
           onPress={() => navigation.navigate('GameStart')}
-        ></TouchableOpacity>
+        >
+          <Text style={styles.buttonText3}>도전?</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button4}
@@ -57,7 +64,6 @@ function Home({ navigation }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -73,46 +79,53 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: 375,
-    right: -8,
-    width: 180,
-    height: 50,
+    left: screenWidth * 0.64, // 화면 너비의 30% 위치에 설정
+    top: screenHeight * 0.573, // 화면 높이의 40% 위치에 설정
+    padding: 15,
+    paddingBottom: 20,
+    paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
+    backgroundColor: '#FADAA2',
   },
 
   button2: {
     position: 'absolute',
-    top: 470,
-    right: -8,
-    width: 180,
-    height: 50,
+    left: screenWidth * 0.65, // 화면 너비의 30% 위치에 설정
+    top: screenHeight * 0.723, // 화면 높이의 40% 위치에 설정
+    padding: 15,
+    paddingBottom: 20,
+    paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
+    backgroundColor: '#F37979',
   },
 
   button3: {
     position: 'absolute',
-    top: 450,
-    left: 50,
-    width: 150,
-    height: 150,
+    left: screenWidth * 0.15, // 화면 너비의 30% 위치에 설정
+    top: screenHeight * 0.7, // 화면 높이의 40% 위치에 설정
+    padding: 20,
+    transform: [{ rotate: '13deg' }],
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
+    backgroundColor: 'white',
   },
 
   button4: {
     position: 'absolute',
-    top: 570,
-    right: -8,
-    width: 180,
-    height: 50,
+    left: screenWidth * 0.64, // 화면 너비의 30% 위치에 설정
+    top: screenHeight * 0.87, // 화면 높이의 40% 위치에 설정
+    padding: 3,
+    paddingBottom: 20,
+    paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
+    backgroundColor: '#FADAA2',
   },
 
   buttonText: {
@@ -120,8 +133,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 27,
   },
-});
 
+  buttonText1: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+
+  buttonText3: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 45,
+  },
+});
 function App() {
   return (
     <NavigationContainer>
